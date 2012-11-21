@@ -10,6 +10,7 @@ namespace SocketServerSample
 {
     class Drive2
     {
+        private const uint Period = 10000;
         //передний левый мотор
         private PWM cf_motorLF = new PWM(Pins.GPIO_PIN_D5);
         private byte cf_PowerLF;
@@ -22,7 +23,8 @@ namespace SocketServerSample
             set
             {
                 cf_PowerLF=value;
-                cf_motorLF.SetPulse(10000,(uint)(10000.0 * (Double)value / 100.0));
+                cf_motorLF.SetPulse(Period, (uint)(Period * (Double)value / 100.0));
+                Debug.Print("LF power:"+value.ToString());
             }
 
         }
@@ -37,7 +39,8 @@ namespace SocketServerSample
             set
             {
                 cf_PowerRF=value;
-                cf_motorRF.SetPulse(10000,(uint)(10000.0 * (Double)value / 100.0));
+                cf_motorRF.SetPulse(Period, (uint)(Period * (Double)value / 100.0));
+                Debug.Print("RF power:"+value.ToString());
             }
 
         }
@@ -52,7 +55,8 @@ namespace SocketServerSample
             set
             {
                 cf_PowerLB=value;
-                cf_motorLB.SetPulse(10000,(uint)(10000.0 * (Double)value / 100.0));
+                cf_motorLB.SetPulse(Period, (uint)(Period * (Double)value / 100.0));
+                Debug.Print("LB power:" + value.ToString());
             }
 
         }
@@ -67,7 +71,8 @@ namespace SocketServerSample
             set
             {
                 cf_PowerRB=value;
-                cf_motorRB.SetPulse(10000,(uint)(10000.0 * (Double)value / 100.0));
+                cf_motorRB.SetPulse(Period, (uint)(Period * (Double)value / 100.0));
+                Debug.Print("RB power:" + value.ToString());
             }
 
         }
