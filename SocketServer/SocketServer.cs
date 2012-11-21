@@ -17,7 +17,7 @@ namespace SocketServerSample
     public static class MySocketServer
     {
         public static OutputPort led = new OutputPort(Pins.ONBOARD_LED, false);
-       // public static OutputPort led1 =new OutputPort(Pins.GPIO_PIN_D13,false);
+        public static OutputPort Bro =new OutputPort(Pins.GPIO_PIN_D12,true);
 
         public static void Main()
         {
@@ -71,7 +71,10 @@ namespace SocketServerSample
         private void ProcessRequest()
         {
             const Int32 c_microsecondsPerSecond = 1000000;
-            motor = new Drive2(50);
+            if (motor == null)
+            {
+                motor = new Drive2(0);
+            }
 
             using (m_clientSocket)
             {
